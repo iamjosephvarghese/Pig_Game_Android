@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Home extends AppCompatActivity {
 
-    Button roll,hold;
+    Button roll,hold,newGame;
     TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo,winnerOne,winnerTwo;
     ImageView dice;
 
@@ -29,6 +29,8 @@ public class Home extends AppCompatActivity {
 
         roll = (Button) findViewById(R.id.roll);
         hold = (Button) findViewById(R.id.hold);
+
+        newGame = (Button)findViewById(R.id.newGame);
 
         tagOne = (TextView) findViewById(R.id.tagOne);
         tagTwo = (TextView) findViewById(R.id.tagTwo);
@@ -47,6 +49,8 @@ public class Home extends AppCompatActivity {
 
         winnerOne.setVisibility(View.INVISIBLE);
         winnerTwo.setVisibility(View.INVISIBLE);
+        newGame.setVisibility(View.INVISIBLE);
+        newGame.setClickable(false);
 
         displayScore();
 
@@ -110,6 +114,15 @@ public class Home extends AppCompatActivity {
 
 
 
+        newGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startNewGame();
+            }
+        });
+
+
 
 
     }
@@ -164,22 +177,45 @@ public class Home extends AppCompatActivity {
         if(user == 1){
             if(total1 >= 10){
                 winnerOne.setVisibility(View.VISIBLE);
-                roll.setClickable(false);
-                hold.setClickable(false);
+                disablePlay();
             }
         }else{
             if(total2 >= 10){
                 winnerTwo.setVisibility(View.VISIBLE);
-                roll.setClickable(false);
-                roll.setClickable(false);
+                disablePlay();
             }
         }
     }
 
 
-    public void newGame(){
+    public void startNewGame(){
+        newGame.setVisibility(View.INVISIBLE);
+        newGame.setClickable(false);
+
+        winnerOne.setVisibility(View.INVISIBLE);
+        winnerTwo.setVisibility(View.INVISIBLE);
+
         total1 = total2 = current1 = current2 = 0;
         displayScore();
+        user = 1;
+
+        enablePlay();
+    }
+
+    public void disablePlay(){
+        roll.setClickable(false);
+        roll.setVisibility(View.INVISIBLE);
+        hold.setClickable(false);
+        hold.setVisibility(View.INVISIBLE);
+        newGame.setVisibility(View.VISIBLE);
+        newGame.setClickable(true);
+    }
+
+    public void enablePlay(){
+        roll.setClickable(true);
+        roll.setVisibility(View.VISIBLE);
+        hold.setClickable(true);
+        hold.setVisibility(View.VISIBLE);
     }
 
 
