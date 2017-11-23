@@ -17,8 +17,8 @@ public class Home extends AppCompatActivity {
     TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo;
     ImageView dice;
 
-    int flag = 0;
-    int current1,current2,total1,total2;
+    int user = 0;
+    int current1 = 0,current2 = 0,total1 = 0,total2 = 0;
 
     int val;
 
@@ -58,6 +58,25 @@ public class Home extends AppCompatActivity {
 
                 dice.setImageResource(getImageId(getApplicationContext(),"dice" + Integer.toString(val)));
 
+
+                addCurrent(val);
+
+
+
+            }
+        });
+
+
+
+
+        hold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                holdTotal();
+
+                switchUser();
             }
         });
 
@@ -71,5 +90,35 @@ public class Home extends AppCompatActivity {
     public int getImageId(Context context,String imageName){
         return context.getResources().getIdentifier("drawable/" + imageName, null, context.getPackageName());
     }
+
+
+    public void addCurrent(int val){
+        if(user == 1){
+            current1 += val;
+        }else {
+            current2 += val;
+        }
+    }
+
+
+    public void holdTotal(){
+        if(user == 1){
+            total1 += current1;
+        }else {
+            total2 += current2;
+        }
+    }
+
+
+    public void switchUser(){
+
+        //needs to set the focusing part
+        if(user == 1){
+            user = 2;
+        }else{
+            user = 1;
+        }
+    }
+
 
 }
