@@ -11,6 +11,6 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Log.d("Inside","Homeactiity");
+        Log.d("Inside","HomeActivity");
     }
 }
