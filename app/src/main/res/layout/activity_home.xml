@@ -23,8 +23,9 @@
             android:id="@+id/tagOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:text="User One"
             android:textSize="30dp"
             android:textStyle="bold"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
             android:text="User Two"
             android:textSize="30dp"
             android:textStyle="bold"
@@ -47,8 +49,8 @@
             android:id="@+id/totalOne"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:gravity="center_horizontal"
             android:text="1"
             android:textSize="30dp"
@@ -97,7 +99,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/currenttwo"
+            android:id="@+id/currentTwo"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginBottom="8dp"
@@ -137,7 +139,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/dice"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginBottom="8dp"
