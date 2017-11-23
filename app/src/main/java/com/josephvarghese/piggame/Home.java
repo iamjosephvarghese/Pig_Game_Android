@@ -17,7 +17,7 @@ public class Home extends AppCompatActivity {
     TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo;
     ImageView dice;
 
-    int user = 0;
+    int user = 1;
     int current1 = 0,current2 = 0,total1 = 0,total2 = 0;
 
     int val;
@@ -42,6 +42,10 @@ public class Home extends AppCompatActivity {
         dice = (ImageView)findViewById(R.id.dice);
 
 
+
+        displayScore();
+
+
         final Random random = new Random();
 
 
@@ -50,17 +54,29 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //or do 1 + (int) (Math.random() * max)
+
 
                 val = random.nextInt(6) + 1;
                 Log.d("val",Integer.toString(val));
+                //or do 1 + (int) (Math.random() * max)
+
+                if(val == 1){
+
+                    dice.setImageResource(getImageId(getApplicationContext(),"dice" + Integer.toString(val)));
+
+                    switchUser();
+
+                }else {
+
+                    dice.setImageResource(getImageId(getApplicationContext(),"dice" + Integer.toString(val)));
+
+                    addCurrent(val);
 
 
-                dice.setImageResource(getImageId(getApplicationContext(),"dice" + Integer.toString(val)));
+                }
 
 
-                addCurrent(val);
-
+                displayScore();
 
 
             }
@@ -77,6 +93,11 @@ public class Home extends AppCompatActivity {
                 holdTotal();
 
                 switchUser();
+
+
+                displayScore();
+
+
             }
         });
 
@@ -114,10 +135,21 @@ public class Home extends AppCompatActivity {
 
         //needs to set the focusing part
         if(user == 1){
+            current1 = 0;
             user = 2;
         }else{
+            current2 = 0;
             user = 1;
         }
+    }
+
+
+    public void displayScore(){
+        currentOne.setText(Integer.toString(current1));
+        currentTwo.setText(Integer.toString(current2));
+
+        totalOne.setText(Integer.toString(total1));
+        totalTwo.setText(Integer.toString(total2));
     }
 
 
