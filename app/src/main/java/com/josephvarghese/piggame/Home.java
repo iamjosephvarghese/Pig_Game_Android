@@ -14,7 +14,7 @@ import java.util.Random;
 public class Home extends AppCompatActivity {
 
     Button roll,hold;
-    TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo;
+    TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo,winnerOne,winnerTwo;
     ImageView dice;
 
     int user = 1;
@@ -39,9 +39,14 @@ public class Home extends AppCompatActivity {
         currentOne = (TextView) findViewById(R.id.currentOne);
         currentTwo = (TextView) findViewById(R.id.currentTwo);
 
+        winnerOne = (TextView)findViewById(R.id.winnerOne);
+        winnerTwo = (TextView)findViewById(R.id.winnerTwo);
+
         dice = (ImageView)findViewById(R.id.dice);
 
 
+        winnerOne.setVisibility(View.INVISIBLE);
+        winnerTwo.setVisibility(View.INVISIBLE);
 
         displayScore();
 
@@ -91,6 +96,8 @@ public class Home extends AppCompatActivity {
 
 
                 holdTotal();
+
+                checkWinner();
 
                 switchUser();
 
@@ -150,6 +157,29 @@ public class Home extends AppCompatActivity {
 
         totalOne.setText(Integer.toString(total1));
         totalTwo.setText(Integer.toString(total2));
+    }
+
+
+    public void checkWinner(){
+        if(user == 1){
+            if(total1 >= 10){
+                winnerOne.setVisibility(View.VISIBLE);
+                roll.setClickable(false);
+                hold.setClickable(false);
+            }
+        }else{
+            if(total2 >= 10){
+                winnerTwo.setVisibility(View.VISIBLE);
+                roll.setClickable(false);
+                roll.setClickable(false);
+            }
+        }
+    }
+
+
+    public void newGame(){
+        total1 = total2 = current1 = current2 = 0;
+        displayScore();
     }
 
 
