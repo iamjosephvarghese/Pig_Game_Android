@@ -175,12 +175,12 @@ public class Home extends AppCompatActivity {
 
     public void checkWinner(){
         if(user == 1){
-            if(total1 >= 10){
+            if(total1 >= 50){
                 winnerOne.setVisibility(View.VISIBLE);
                 disablePlay();
             }
         }else{
-            if(total2 >= 10){
+            if(total2 >= 50){
                 winnerTwo.setVisibility(View.VISIBLE);
                 disablePlay();
             }
