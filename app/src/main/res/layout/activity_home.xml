@@ -174,7 +174,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
-        app:srcCompat="@drawable/dice6" />
+        app:srcCompat="@drawable/dice_show_first" />
 
     <Button
         android:id="@+id/newGame"

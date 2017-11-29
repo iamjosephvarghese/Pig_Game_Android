@@ -99,7 +99,7 @@ public class Home extends AppCompatActivity {
 
 
                 val = random.nextInt(6) + 1;
-                Log.d("val",Integer.toString(val));
+                Log.d("Random Number ",Integer.toString(val));
                 //or do 1 + (int) (Math.random() * max)
 
                 if(val == 1){
