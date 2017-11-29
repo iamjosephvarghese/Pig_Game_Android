@@ -254,7 +254,6 @@ public class Home extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
         backDialog.show();
     }
