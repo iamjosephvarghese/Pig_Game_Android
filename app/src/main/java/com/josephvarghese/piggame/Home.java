@@ -2,12 +2,16 @@ package com.josephvarghese.piggame;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.Random;
 
@@ -16,6 +20,10 @@ public class Home extends AppCompatActivity {
     Button roll,hold,newGame;
     TextView tagOne,tagTwo,totalOne,totalTwo,currentOne,currentTwo,winnerOne,winnerTwo;
     ImageView dice;
+
+
+    MaterialDialog.Builder back;
+    MaterialDialog backDialog;
 
     int user = 1;
     int current1 = 0,current2 = 0,total1 = 0,total2 = 0;
@@ -53,6 +61,31 @@ public class Home extends AppCompatActivity {
         newGame.setClickable(false);
 
         displayScore();
+
+
+        back = new MaterialDialog.Builder(Home.this)
+                .title("Exit")
+                .content("Are you sure you want to exit?")
+                .cancelable(false)
+                .positiveText("Yes")
+                .negativeText("No")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        backDialog.dismiss();
+                        finish();
+                        //
+                    }
+                }).onNegative(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        //backDialog.dismiss();
+                    }
+                });
+
+        backDialog = back.build();
+
+
 
 
         final Random random = new Random();
@@ -219,4 +252,10 @@ public class Home extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        backDialog.show();
+    }
 }
