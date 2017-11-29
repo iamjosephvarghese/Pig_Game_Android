@@ -1,5 +1,6 @@
 package com.josephvarghese.piggame;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,6 +31,7 @@ public class Home extends AppCompatActivity {
 
     int val;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,9 @@ public class Home extends AppCompatActivity {
         winnerTwo = (TextView)findViewById(R.id.winnerTwo);
 
         dice = (ImageView)findViewById(R.id.dice);
+
+        tagOne.setTextColor(getResources().getColor(R.color.colorAccent));
+        tagTwo.setTextColor(getResources().getColor(R.color.Grey));
 
 
         winnerOne.setVisibility(View.INVISIBLE);
@@ -184,13 +189,18 @@ public class Home extends AppCompatActivity {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     public void switchUser(){
 
         //needs to set the focusing part
         if(user == 1){
+            tagTwo.setTextColor(getResources().getColor(R.color.colorAccent));
+            tagOne.setTextColor(getResources().getColor(R.color.Grey));
             current1 = 0;
             user = 2;
         }else{
+            tagOne.setTextColor(getResources().getColor(R.color.colorAccent));
+            tagTwo.setTextColor(getResources().getColor(R.color.Grey));
             current2 = 0;
             user = 1;
         }
@@ -221,7 +231,11 @@ public class Home extends AppCompatActivity {
     }
 
 
+
     public void startNewGame(){
+
+        dice.setImageResource(R.drawable.dice_show_first);
+
         newGame.setVisibility(View.INVISIBLE);
         newGame.setClickable(false);
 
@@ -231,6 +245,9 @@ public class Home extends AppCompatActivity {
         total1 = total2 = current1 = current2 = 0;
         displayScore();
         user = 1;
+
+        tagOne.setTextColor(getResources().getColor(R.color.colorAccent));
+        tagTwo.setTextColor(getResources().getColor(R.color.Grey));
 
         enablePlay();
     }
